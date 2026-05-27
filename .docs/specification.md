@@ -87,7 +87,38 @@ Een medewerker kan inloggen, een klant met bijbehorende motor opzoeken of aanmak
 
 ## User stories
 
-> Worden toegevoegd per sprint na akkoord van de gebruiker.
+### US-001 — Inloggen en uitloggen
+
+Als eigenaar of medewerker  
+wil ik kunnen inloggen met e-mailadres en wachtwoord  
+zodat ik toegang heb tot de applicatie en anderen geen ongeautoriseerde toegang hebben.
+
+#### Acceptatiecriteria
+
+- [ ] Er is een loginpagina met velden voor e-mailadres en wachtwoord
+- [ ] Bij correcte gegevens wordt de gebruiker doorgestuurd naar de homepagina
+- [ ] Bij onjuiste gegevens verschijnt een foutmelding (zonder te vermelden wat fout is)
+- [ ] Niet-ingelogde gebruikers worden automatisch doorgestuurd naar de loginpagina
+- [ ] Een eigenaar-account heeft de rol `Eigenaar`
+- [ ] Een medewerker-account heeft de rol `Medewerker`
+- [ ] Pagina's die alleen voor de eigenaar zijn, zijn niet bereikbaar voor medewerkers
+- [ ] Er is een uitlogknop zichtbaar voor ingelogde gebruikers in de navigatie
+- [ ] Na uitloggen wordt de gebruiker doorgestuurd naar de loginpagina
+- [ ] Na uitloggen werkt de terugknop niet meer terug naar beveiligde pagina's
+- [ ] Bij het eerste opstarten bestaat er een standaard eigenaar-account (e-mail + tijdelijk wachtwoord, vastgelegd in documentatie)
+
+#### Technische notities
+
+- ASP.NET Core Identity met cookie-authenticatie
+- SQLite als database (via EF Core in Infrastructure)
+- Rollen: `Eigenaar` en `Medewerker` (constanten in Application.Constants)
+- Login/logout via Razor Pages (buiten Blazor circuit — vereist voor Identity cookie-flow)
+- Seed-data: één eigenaar-account bij eerste start
+- `AddCascadingAuthenticationState()` + `AuthorizeView` in Blazor shell
+
+#### Status
+
+In ontwikkeling
 
 ## Niet-functionele eisen
 
