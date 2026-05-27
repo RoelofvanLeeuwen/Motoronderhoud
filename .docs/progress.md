@@ -2,7 +2,7 @@
 
 ## Huidige status
 
-Initiële projectbasis gereed. Clean Architecture solution, Blazor-designbaseline en GitHub zijn volledig ingericht. Het systeem is klaar voor de eerste user story.
+Initiële projectbasis gereed. Applicatiescope en MoSCoW-indeling vastgelegd in specification.md. Het systeem is klaar voor de eerste user story.
 
 ## Actieve branch
 
@@ -47,4 +47,4 @@ Initiële projectbasis gereed. Clean Architecture solution, Blazor-designbaselin
 
 ## Volgende logische stap
 
-US-001 voorstellen en verfijnen na akkoord van de gebruiker. Daarna featurebranch aanmaken vanaf development.
+US-001 voorstellen en verfijnen (gebruiker heeft akkoord gegeven om scope te bespreken). Daarna featurebranch aanmaken vanaf development.
