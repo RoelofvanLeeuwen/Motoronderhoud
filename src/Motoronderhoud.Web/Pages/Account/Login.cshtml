@@ -1,0 +1,100 @@
+@page "/account/login"
+@model Motoronderhoud.Web.Pages.Account.LoginModel
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inloggen — Motoronderhoud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; padding: 0; }
+        :root {
+            --gc-primary: #E5007D; --gc-primary-600: #C30068; --gc-primary-50: #FFF0F8;
+            --gc-ink: #14171F; --gc-ink-2: #3A3F4B; --gc-ink-3: #6B7280;
+            --gc-line: #E7E7EC; --gc-bg: #FAFAFB;
+            --gc-font: 'Manrope', system-ui, -apple-system, sans-serif;
+            --gc-radius: 14px; --gc-radius-sm: 10px;
+            --gc-shadow: 0 4px 18px -8px rgba(20,23,31,.12), 0 2px 6px -3px rgba(20,23,31,.06);
+        }
+        body {
+            font-family: var(--gc-font); background: var(--gc-bg); color: var(--gc-ink);
+            display: flex; align-items: center; justify-content: center; min-height: 100dvh;
+        }
+        .login-card {
+            background: #fff; border: 1px solid var(--gc-line); border-radius: var(--gc-radius);
+            box-shadow: var(--gc-shadow); padding: 40px; width: 100%; max-width: 400px; margin: 16px;
+        }
+        .login-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+        .login-logo-mark { display: inline-flex; }
+        .login-logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+        .login-logo-org { font-weight: 800; font-size: 15px; }
+        .login-logo-sub { font-weight: 600; font-size: 12px; color: var(--gc-primary); text-transform: uppercase; letter-spacing: 0.02em; }
+        h1 { margin: 0 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+        .login-sub { color: var(--gc-ink-3); font-size: 14px; margin-bottom: 28px; }
+        .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+        .field label { font-size: 13px; font-weight: 600; color: var(--gc-ink-2); }
+        .field input {
+            font-family: var(--gc-font); font-size: 14px; padding: 10px 12px;
+            border: 1px solid var(--gc-line); border-radius: var(--gc-radius-sm);
+            background: #fff; color: var(--gc-ink); transition: border-color .15s, box-shadow .15s;
+        }
+        .field input:focus {
+            outline: none; border-color: var(--gc-primary); box-shadow: 0 0 0 3px var(--gc-primary-50);
+        }
+        .btn-primary {
+            width: 100%; padding: 12px; border-radius: var(--gc-radius-sm); font-family: var(--gc-font);
+            font-weight: 700; font-size: 15px; border: none; cursor: pointer;
+            background: var(--gc-primary); color: #fff;
+            box-shadow: 0 2px 0 var(--gc-primary-600); transition: background .15s, transform .08s;
+        }
+        .btn-primary:hover { background: var(--gc-primary-600); }
+        .btn-primary:active { transform: translateY(1px); }
+        .error {
+            background: #FFF0F0; border: 1px solid #FCA5A5; border-radius: var(--gc-radius-sm);
+            color: #991B1B; font-size: 13.5px; padding: 10px 14px; margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="login-logo">
+            <span class="login-logo-mark">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#E5007D"/>
+                    <path d="M10 9v14M10 9h8a5 5 0 0 1 0 10h-3v4" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span class="login-logo-text">
+                <span class="login-logo-org">Graafschap</span>
+                <span class="login-logo-sub">Motoronderhoud</span>
+            </span>
+        </div>
+
+        <h1>Inloggen</h1>
+        <p class="login-sub">Vul je e-mailadres en wachtwoord in.</p>
+
+        @if (!string.IsNullOrEmpty(Model.Foutmelding))
+        {
+            <div class="error">@Model.Foutmelding</div>
+        }
+
+        <form method="post">
+            @Html.AntiForgeryToken()
+            <div class="field">
+                <label for="email">E-mailadres</label>
+                <input id="email" name="Email" type="email" autocomplete="email"
+                       value="@Model.Email" required autofocus />
+            </div>
+            <div class="field">
+                <label for="password">Wachtwoord</label>
+                <input id="password" name="Password" type="password" autocomplete="current-password" required />
+            </div>
+            <button type="submit" class="btn-primary">Inloggen</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -123,6 +123,14 @@ html, body {
     user-select: none;
 }
 
+/* ===== Uitloggen ===== */
+.gc-logout-form { display: contents; }
+.gc-avatar-name {
+    font-size: 13px; font-weight: 600; color: var(--gc-ink-2);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;
+}
+@media (max-width: 767px) { .gc-avatar-name { display: none; } }
+
 /* ===== Responsive: hamburger en desktop nav ===== */
 @media (min-width: 768px) {
     .gc-hamburger { display: none; }
