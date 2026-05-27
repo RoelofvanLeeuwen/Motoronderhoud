@@ -2,7 +2,7 @@
 
 ## Huidige status
 
-Initiële projectbasis in opbouw. Documentatiestructuur aangemaakt. Clean Architecture solution en Blazor-designbaseline worden ingericht op `development`. GitHub is gekoppeld.
+Initiële projectbasis gereed. Clean Architecture solution, Blazor-designbaseline en GitHub zijn volledig ingericht. Het systeem is klaar voor de eerste user story.
 
 ## Actieve branch
 
@@ -10,7 +10,7 @@ Initiële projectbasis in opbouw. Documentatiestructuur aangemaakt. Clean Archit
 
 ## Laatste werkende situatie
 
-Nog geen applicatiecode. Documentatiestructuur en solution-opzet worden aangemaakt.
+`dotnet build` slaagt zonder fouten of waarschuwingen. Alle zes projecten compileren. Blazor shell is gebaseerd op DefaultTemplate.zip (Graafschap College design system).
 
 ## Afgeronde onderdelen
 
@@ -18,12 +18,14 @@ Nog geen applicatiecode. Documentatiestructuur en solution-opzet worden aangemaa
 |-------|-----------|-----------|------------|
 | 2026-05-27 | Documentatiestructuur | Aangemaakt (.docs/*.md, README.md) | N.v.t. |
 | 2026-05-27 | Git-repository | Geïnitialiseerd, main gepusht naar GitHub | N.v.t. |
+| 2026-05-27 | Clean Architecture solution | Motoronderhoud.slnx, Core/Application/Infrastructure/Web/Tests op development | dotnet build: 0 errors, 0 warnings |
+| 2026-05-27 | Blazor designbaseline | DefaultTemplate.zip vertaald naar MainLayout.razor, Icon.razor, app.css | dotnet build: 0 errors, 0 warnings |
 
 ## Lopende onderdelen
 
 | Onderdeel | Status | Volgende stap | Blokkades |
 |----------|--------|---------------|-----------|
-| Clean Architecture solution | In uitvoering | Solution en projecten aanmaken, Blazor shell toepassen | — |
+| — | — | — | — |
 
 ## Nog te doen
 
@@ -45,4 +47,4 @@ Nog geen applicatiecode. Documentatiestructuur en solution-opzet worden aangemaa
 
 ## Volgende logische stap
 
-Na voltooiing van de initiële basis (solution + Blazor shell op development): bespreken en verfijnen van US-001 na akkoord van de gebruiker.
+US-001 voorstellen en verfijnen na akkoord van de gebruiker. Daarna featurebranch aanmaken vanaf development.

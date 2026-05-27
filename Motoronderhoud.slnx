@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="src/Motoronderhoud.Core/Motoronderhoud.Core.csproj" />
+  <Project Path="src/Motoronderhoud.Application/Motoronderhoud.Application.csproj" />
+  <Project Path="src/Motoronderhoud.Infrastructure/Motoronderhoud.Infrastructure.csproj" />
+  <Project Path="src/Motoronderhoud.Web/Motoronderhoud.Web.csproj" />
+  <Project Path="tests/Motoronderhoud.Core.Tests/Motoronderhoud.Core.Tests.csproj" />
+  <Project Path="tests/Motoronderhoud.Application.Tests/Motoronderhoud.Application.Tests.csproj" />
+</Solution>

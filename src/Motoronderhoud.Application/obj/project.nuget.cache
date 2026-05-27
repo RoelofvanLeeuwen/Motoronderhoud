@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2R8QM9GtO/0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\r.vanleeuwen\\source\\repos\\Motoronderhoud\\src\\Motoronderhoud.Application\\Motoronderhoud.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\r.vanleeuwen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

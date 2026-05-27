@@ -1,0 +1,119 @@
+@inherits LayoutComponentBase
+@rendermode InteractiveServer
+
+<div class="gc-shell">
+    <header class="gc-appbar">
+        <div class="gc-appbar-inner">
+            <div class="gc-brand">
+                <button class="gc-iconbtn gc-hamburger" aria-label="Menu openen" @onclick="ToggleDrawer">
+                    <Icon Name="@(_drawerOpen ? "close" : "menu")" Size="22" />
+                </button>
+                <a class="gc-logo" href="/">
+                    <span class="gc-logo-mark" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="var(--gc-primary)" />
+                            <path d="M10 9v14M10 9h8a5 5 0 0 1 0 10h-3v4" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="gc-logo-text">
+                        <span class="gc-logo-org">Graafschap</span>
+                        <span class="gc-logo-sub">Motoronderhoud</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="gc-nav gc-nav-desktop" aria-label="Hoofdnavigatie">
+                @foreach (var item in _navItems)
+                {
+                    <NavLink class="gc-nav-link" href="@item.Href"
+                             Match="@(item.Href == "" ? NavLinkMatch.All : NavLinkMatch.Prefix)"
+                             ActiveClass="is-active">
+                        @item.Label
+                    </NavLink>
+                }
+            </nav>
+
+            <div class="gc-appbar-actions">
+                <button class="gc-iconbtn" aria-label="Notificaties">
+                    <Icon Name="bell" Size="18" />
+                    <span class="gc-dot"></span>
+                </button>
+                <button class="gc-iconbtn" aria-label="Thema wisselen">
+                    <Icon Name="sun" Size="18" />
+                </button>
+                <div class="gc-avatar" aria-label="Account">MO</div>
+            </div>
+        </div>
+    </header>
+
+    @if (_drawerOpen)
+    {
+        <div class="gc-scrim" @onclick="CloseDrawer" aria-hidden="true"></div>
+        <aside class="gc-drawer" role="navigation" aria-label="Mobiel menu">
+            <div class="gc-drawer-head">
+                <a class="gc-logo" href="/" @onclick="CloseDrawer">
+                    <span class="gc-logo-mark">
+                        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="var(--gc-primary)" />
+                            <path d="M10 9v14M10 9h8a5 5 0 0 1 0 10h-3v4" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="gc-logo-text">
+                        <span class="gc-logo-org">Graafschap</span>
+                        <span class="gc-logo-sub">Motoronderhoud</span>
+                    </span>
+                </a>
+                <button class="gc-iconbtn" aria-label="Menu sluiten" @onclick="CloseDrawer">
+                    <Icon Name="close" Size="20" />
+                </button>
+            </div>
+            <nav class="gc-drawer-nav">
+                @foreach (var item in _navItems)
+                {
+                    <NavLink class="gc-drawer-link" href="@item.Href"
+                             Match="@(item.Href == "" ? NavLinkMatch.All : NavLinkMatch.Prefix)"
+                             ActiveClass="is-active"
+                             @onclick="CloseDrawer">
+                        <span class="gc-drawer-ico">
+                            <Icon Name="@item.Icon" Size="20" />
+                        </span>
+                        <span>@item.Label</span>
+                    </NavLink>
+                }
+            </nav>
+            <div class="gc-drawer-foot">
+                <div class="gc-avatar" style="width:36px;height:36px;">MO</div>
+                <div>
+                    <div class="gc-drawer-user">Beheerder</div>
+                    <div class="gc-drawer-role">Motoronderhoud</div>
+                </div>
+            </div>
+        </aside>
+    }
+
+    <main class="gc-main">
+        @Body
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    Er is een onverwachte fout opgetreden.
+    <a href="." class="reload">Herladen</a>
+    <span class="dismiss">&#x2715;</span>
+</div>
+
+@code {
+    private bool _drawerOpen;
+
+    private record NavItem(string Label, string Icon, string Href);
+
+    private readonly NavItem[] _navItems =
+    [
+        new("Home",             "home",    ""),
+        new("Counter",          "counter", "counter"),
+        new("Weersvoorspelling","cloud",   "weather"),
+    ];
+
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+    private void CloseDrawer()  => _drawerOpen = false;
+}
