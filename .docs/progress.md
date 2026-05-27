@@ -2,15 +2,15 @@
 
 ## Huidige status
 
-Initiële projectbasis gereed. Applicatiescope en MoSCoW-indeling vastgelegd in specification.md. Het systeem is klaar voor de eerste user story.
+US-001 (Authenticatie) gereed. Login, logout en seeding functioneel getest. Klaar voor merge naar development.
 
 ## Actieve branch
 
-`development`
+`feature/US-001-authenticatie`
 
 ## Laatste werkende situatie
 
-`dotnet build` slaagt zonder fouten of waarschuwingen. Alle zes projecten compileren. Blazor shell is gebaseerd op DefaultTemplate.zip (Graafschap College design system).
+`dotnet build` slaagt zonder fouten of waarschuwingen. App start op, SQLite-database wordt aangemaakt, eigenaar-account wordt geseeed, login/logout werken correct.
 
 ## Afgeronde onderdelen
 
@@ -20,6 +20,7 @@ Initiële projectbasis gereed. Applicatiescope en MoSCoW-indeling vastgelegd in 
 | 2026-05-27 | Git-repository | Geïnitialiseerd, main gepusht naar GitHub | N.v.t. |
 | 2026-05-27 | Clean Architecture solution | Motoronderhoud.slnx, Core/Application/Infrastructure/Web/Tests op development | dotnet build: 0 errors, 0 warnings |
 | 2026-05-27 | Blazor designbaseline | DefaultTemplate.zip vertaald naar MainLayout.razor, Icon.razor, app.css | dotnet build: 0 errors, 0 warnings |
+| 2026-05-27 | US-001 Authenticatie | ASP.NET Core Identity + SQLite, login/logout via Razor Pages, seeder eigenaar-account | Alle acceptatietesten geslaagd |
 
 ## Lopende onderdelen
 
@@ -31,7 +32,8 @@ Initiële projectbasis gereed. Applicatiescope en MoSCoW-indeling vastgelegd in 
 
 | Prioriteit | Onderdeel | Reden |
 |-----------|-----------|-------|
-| 1 | Applicatiescope en US-001 bespreken | Vereist akkoord gebruiker na initiële basis |
+| 1 | PR feature/US-001-authenticatie → development mergen | US-001 klaar voor review |
+| 2 | Volgende user story (US-002) bespreken en verfijnen | Na merge US-001 |
 
 ## Bekende problemen
 
@@ -43,8 +45,12 @@ Initiële projectbasis gereed. Applicatiescope en MoSCoW-indeling vastgelegd in 
 
 | Datum | Test | Resultaat |
 |-------|------|-----------|
-| — | — | — |
+| 2026-05-27 | GET / ongeauthenticeerd → 200 (geen globale auth-guard) | Verwacht; login-redirect geldt per component |
+| 2026-05-27 | GET /account/login → 200, formulier zichtbaar | Geslaagd |
+| 2026-05-27 | POST /account/login juiste credentials → 302 redirect naar / | Geslaagd |
+| 2026-05-27 | POST /account/login fout wachtwoord → 200, foutmelding zichtbaar | Geslaagd |
+| 2026-05-27 | POST /account/logout → 302 redirect naar /account/login | Geslaagd |
 
 ## Volgende logische stap
 
-US-001 voorstellen en verfijnen (gebruiker heeft akkoord gegeven om scope te bespreken). Daarna featurebranch aanmaken vanaf development.
+PR aanmaken feature/US-001-authenticatie → development, daarna US-002 bespreken.
